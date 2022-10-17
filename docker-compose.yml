@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  auth-app:
+    image: auth-app
+    build:
+      context: ./auth-app
+      dockerfile: Dockerfile
+    command: /go/bin/auth-app
+    ports:
+      - 3000:3000
+    env_file:
+      - ./auth-app/.env
+  fetch-app:
+    image : fetch-app
+    build:
+      context: ./fetch-app
+      dockerfile: Dockerfile
+    command: /go/bin/fetch-app
+    ports:
+      - 4000:4000
+    env_file:
+      - ./fetch-app/.env
